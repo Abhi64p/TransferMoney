@@ -1,15 +1,19 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import BackSVG from '../assets/svg/BackSVG';
 import {Typography} from '../styles';
 
-const BackButton = ({onPress}) => (
-  <TouchableOpacity style={styles.margins} onPress={onPress}>
-    <BackSVG />
-    <Text style={Typography.h4White}>Back</Text>
-  </TouchableOpacity>
-);
+const BackButton = ({containerStyle}) => {
+  const {goBack} = useNavigation();
+  return (
+    <TouchableOpacity style={[styles.margins, containerStyle]} onPress={goBack}>
+      <BackSVG />
+      <Text style={Typography.h4White}>Back</Text>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   margins: {

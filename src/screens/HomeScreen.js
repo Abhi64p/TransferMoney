@@ -62,6 +62,7 @@ const HomeScreen = ({navigation: {navigate}}) => {
   const openDialer = () => setDialerOpen(true);
   const closeDialer = () => setDialerOpen(false);
   const handleDrawerClick = () => navigate('RequestScreen');
+  const handleSendMoneyClick = () => navigate('SendScreen');
 
   return (
     <>
@@ -91,12 +92,14 @@ const HomeScreen = ({navigation: {navigate}}) => {
           </View>
         </View>
         <View style={styles.row2}>
-          <TouchableOpacity style={styles.sendReceiveMoney}>
+          <TouchableOpacity
+            style={styles.sendReceiveMoney}
+            onPress={openDialer}>
             <Text style={Typography.buttonTertiary}>Request money</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.sendReceiveMoney}
-            onPress={openDialer}>
+            onPress={handleSendMoneyClick}>
             <Text style={Typography.buttonTertiary}>Send money</Text>
           </TouchableOpacity>
         </View>
