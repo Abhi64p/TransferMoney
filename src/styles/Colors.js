@@ -1,6 +1,17 @@
 export const Colors = {
   primary: '#0E164D',
   secondary: '#17288E',
+  tertiary: '#212A6B',
   liteYellow: '#FDD590',
   yellow: '#FFB129',
+  orange: '#FAAD39',
+  violet: '#426DDC',
+  violet1: '#464E8A',
+  violet2: '#4E589F',
+  violet3: '#192259',
+  violet4: '#858EC5',
+  background: '#010A43',
+  background1: '#10194E',
+  red: '#FE4A54',
+  green: '#1DC7AC',
 };

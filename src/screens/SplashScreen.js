@@ -17,45 +17,51 @@ import SplashScreenSVG5 from '../assets/svg/SplashScreenSVG5';
 
 const {width} = Dimensions.get('window');
 
-const SplashScreen = () => (
-  <>
-    <StatusBar
-      animated={true}
-      hidden={true}
-      translucent={true}
-      backgroundColor="rgba(0,0,0,0.3)"
-    />
-    <View style={styles.container}>
-      <View style={styles.svg2}>
-        <SplashScreenSVG2 />
-      </View>
-      <View style={styles.svg1}>
-        <SplashScreenSVG1 />
-      </View>
-      <View style={styles.svg3}>
-        <SplashScreenSVG3 />
-      </View>
-      <View style={styles.svg5}>
-        <SplashScreenSVG5 width={width + 10} />
-      </View>
-      <SplashScreenSVG4 />
-      <View style={styles.bottomBox}>
-        <View style={styles.row0}>
-          <View style={styles.smallBar} />
-          <View style={styles.largeBar} />
-          <View style={styles.smallBar} />
+const SplashScreen = ({navigation: {navigate}}) => {
+  const handleStartBanking = () => navigate('HomeScreen');
+
+  return (
+    <>
+      <StatusBar
+        animated={true}
+        hidden={true}
+        backgroundColor={Colors.background}
+        showHideTransition={true}
+      />
+      <View style={styles.container}>
+        <View style={styles.svg2}>
+          <SplashScreenSVG2 />
         </View>
-        <Text style={Typography.headingWhite}>Transfer that is safe</Text>
-        <Text style={[Typography.normalWhite, styles.marginTop10]}>
-          You have nothing to be scared{'\n'}about, we got you covered
-        </Text>
-        <TouchableOpacity style={styles.bankingButton}>
-          <Text style={Typography.buttonText}>Start banking</Text>
-        </TouchableOpacity>
+        <View style={styles.svg1}>
+          <SplashScreenSVG1 />
+        </View>
+        <View style={styles.svg3}>
+          <SplashScreenSVG3 />
+        </View>
+        <View style={styles.svg5}>
+          <SplashScreenSVG5 width={width + 10} />
+        </View>
+        <SplashScreenSVG4 />
+        <View style={styles.bottomBox}>
+          <View style={styles.row0}>
+            <View style={styles.smallBar} />
+            <View style={styles.largeBar} />
+            <View style={styles.smallBar} />
+          </View>
+          <Text style={Typography.h1White}>Transfer that is safe</Text>
+          <Text style={[Typography.h4White, styles.marginTop10]}>
+            You have nothing to be scared{'\n'}about, we got you covered
+          </Text>
+          <TouchableOpacity
+            style={styles.bankingButton}
+            onPress={handleStartBanking}>
+            <Text style={Typography.buttonPrimary}>Start banking</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  </>
-);
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
