@@ -39,6 +39,11 @@ export const Typography = StyleSheet.create({
     fontSize: 14,
     color: 'white',
   },
+  h4Violet: {
+    fontFamily: 'Inter-Lite',
+    fontSize: 14,
+    color: Colors.violet4,
+  },
   h5White: {
     fontFamily: 'Inter-Lite',
     fontSize: 12,
@@ -63,5 +68,20 @@ export const Typography = StyleSheet.create({
     fontFamily: 'Inter-Lite',
     fontSize: 14,
     color: Colors.violet1,
+  },
+  dialerMoney: {
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 40,
+    color: 'white',
+  },
+  title: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 18,
+    color: 'white',
+  },
+  name: {
+    fontFamily: 'Inter-Medium',
+    fontSize: 24,
+    color: 'white',
   },
 });

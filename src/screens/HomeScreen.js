@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -19,6 +19,7 @@ import User1 from '../assets/images/User1.jpg';
 import User2 from '../assets/images/User2.jpg';
 import User3 from '../assets/images/User3.jpg';
 import User4 from '../assets/images/User4.jpg';
+import MoneyDialer from '../components/MoneyDialer';
 
 const RECEIVED = 'RECEIVED';
 const FAILED = 'FAILED';
@@ -55,56 +56,71 @@ const users = [
   },
 ];
 
-const HomeScreen = () => (
-  <>
-    <StatusBar hidden={false} />
-    <View style={styles.container}>
-      <View style={styles.row0}>
-        <TouchableOpacity style={styles.drawerIconContainer}>
-          <DrawerIconSVG />
-        </TouchableOpacity>
-        <Text style={[Typography.h2White, styles.marginLeft20]}>
-          Hello Sandra,
-        </Text>
-        <View style={styles.flex1} />
-        <TouchableOpacity style={styles.addMoneyButton}>
-          <Text style={Typography.buttonSecondary}>Add money</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.innerContainer}>
-        <Text style={Typography.h5White}>Your current balance is</Text>
-        <View style={styles.row1}>
-          <MoneySVG color="white" />
-          <Text style={[Typography.h0White, styles.marginLeft15]}>200,000</Text>
-        </View>
-      </View>
-      <View style={styles.row2}>
-        <TouchableOpacity style={styles.sendReceiveMoney}>
-          <Text style={Typography.buttonTertiary}>Request money</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.sendReceiveMoney}>
-          <Text style={Typography.buttonTertiary}>Send money</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.flex1} />
-      <View style={styles.bottomSheet}>
-        <View style={styles.bottomSheetNob} />
-        <View style={styles.row6}>
-          <Text style={Typography.h2White}>All Transactions</Text>
-          <View style={styles.flex1} />
-          <Text style={[Typography.h4White, {color: Colors.violet2}]}>
-            Sort by:{'   '}
+const HomeScreen = ({navigation: {navigate}}) => {
+  const [dialerOpen, setDialerOpen] = useState(false);
+
+  const openDialer = () => setDialerOpen(true);
+  const closeDialer = () => setDialerOpen(false);
+  const handleDrawerClick = () => navigate('RequestScreen');
+
+  return (
+    <>
+      <StatusBar hidden={false} />
+      <View style={styles.container}>
+        <View style={styles.row0}>
+          <TouchableOpacity
+            style={styles.drawerIconContainer}
+            onPress={handleDrawerClick}>
+            <DrawerIconSVG />
+          </TouchableOpacity>
+          <Text style={[Typography.h2White, styles.marginLeft20]}>
+            Hello Sandra,
           </Text>
-          <Text style={Typography.h4White}>Recent</Text>
-          <DownArrowSVG top={1} left={5} />
+          <View style={styles.flex1} />
+          <TouchableOpacity style={styles.addMoneyButton}>
+            <Text style={Typography.buttonSecondary}>Add money</Text>
+          </TouchableOpacity>
         </View>
-        {users?.map((user, index) => (
-          <User key={user.id} index={index} {...user} />
-        ))}
+        <View style={styles.innerContainer}>
+          <Text style={Typography.h5White}>Your current balance is</Text>
+          <View style={styles.row1}>
+            <MoneySVG color="white" />
+            <Text style={[Typography.h0White, styles.marginLeft15]}>
+              200,000
+            </Text>
+          </View>
+        </View>
+        <View style={styles.row2}>
+          <TouchableOpacity style={styles.sendReceiveMoney}>
+            <Text style={Typography.buttonTertiary}>Request money</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.sendReceiveMoney}
+            onPress={openDialer}>
+            <Text style={Typography.buttonTertiary}>Send money</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.flex1} />
+        <View style={styles.bottomSheet}>
+          <View style={styles.bottomSheetNob} />
+          <View style={styles.row6}>
+            <Text style={Typography.h2White}>All Transactions</Text>
+            <View style={styles.flex1} />
+            <Text style={[Typography.h4White, {color: Colors.violet2}]}>
+              Sort by:{'   '}
+            </Text>
+            <Text style={Typography.h4White}>Recent</Text>
+            <DownArrowSVG top={1} left={5} />
+          </View>
+          {users?.map((user, index) => (
+            <User key={user.id} index={index} {...user} />
+          ))}
+        </View>
       </View>
-    </View>
-  </>
-);
+      <MoneyDialer visible={dialerOpen} onClose={closeDialer} />
+    </>
+  );
+};
 
 const User = ({name, photo, status, amount, index}) => {
   const backgroundColor = index % 2 === 0 ? Colors.violet3 : Colors.background1;
@@ -159,7 +175,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  row0: {flexDirection: 'row', padding: 20, alignItems: 'center'},
+  row0: {
+    flexDirection: 'row',
+    padding: 20,
+    alignItems: 'center',
+    paddingTop: 40,
+  },
   row1: {flexDirection: 'row', marginTop: 10, alignItems: 'center'},
   row2: {flexDirection: 'row', marginVertical: 20, paddingHorizontal: 10},
   row3: {

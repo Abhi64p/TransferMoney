@@ -22,12 +22,7 @@ const SplashScreen = ({navigation: {navigate}}) => {
 
   return (
     <>
-      <StatusBar
-        animated={true}
-        hidden={true}
-        backgroundColor={Colors.background}
-        showHideTransition={true}
-      />
+      <StatusBar translucent={true} backgroundColor={'rgba(0,0,0,0)'} />
       <View style={styles.container}>
         <View style={styles.svg2}>
           <SplashScreenSVG2 />

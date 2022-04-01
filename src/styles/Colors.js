@@ -14,4 +14,5 @@ export const Colors = {
   background1: '#10194E',
   red: '#FE4A54',
   green: '#1DC7AC',
+  rose: '#FF2E63',
 };

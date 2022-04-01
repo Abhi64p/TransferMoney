@@ -1,17 +1,31 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import BackButton from '../components/BackButton';
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
+import RequestScreen from '../screens/RequestScreen';
 
 const Stack = createNativeStackNavigator();
 
 const RootStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="SplashScreen"
-    screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
+    screenOptions={{
+      animation: 'slide_from_right',
+      headerTransparent: true,
+      headerTitle: () => null,
+      headerBackTitle: () => null,
+      headerLeft: ({onPress, canGoBack}) =>
+        canGoBack ? <BackButton onPress={onPress} /> : null,
+    }}>
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
-    <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    <Stack.Screen
+      name="HomeScreen"
+      component={HomeScreen}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen name="RequestScreen" component={RequestScreen} />
   </Stack.Navigator>
 );
 
