@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-import {Colors, Typography} from '../styles';
-import BGVectorSVG from '../assets/svg/BGVectorSVG';
-import MoneySVG from '../assets/svg/MoneySVG';
-import CircleSVG from '../assets/svg/CircleSVG';
 import User5 from '../assets/images/User5.jpg';
+import BGVectorSVG from '../assets/svg/BGVectorSVG';
+import CircleSVG from '../assets/svg/CircleSVG';
+import MoneySVG from '../assets/svg/MoneySVG';
+import {Colors, Typography} from '../styles';
 
 const RequestScreen = () => (
   <View style={styles.container}>

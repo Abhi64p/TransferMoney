@@ -1,60 +1,29 @@
 import React, {useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
   Image,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
-import {Colors, Typography} from '../styles';
-import DrawerIconSVG from '../assets/svg/DrawerIconSVG';
-import MoneySVG from '../assets/svg/MoneySVG';
-import FailedSVG from '../assets/svg/FailedSVG';
-import ReceivedSVG from '../assets/svg/ReceivedSVG';
-import SendSVG from '../assets/svg/SendSVG';
-import DownArrowSVG from '../assets/svg/DownArrowSVG';
 import User1 from '../assets/images/User1.jpg';
 import User2 from '../assets/images/User2.jpg';
 import User3 from '../assets/images/User3.jpg';
 import User4 from '../assets/images/User4.jpg';
+import DownArrowSVG from '../assets/svg/DownArrowSVG';
+import DrawerIconSVG from '../assets/svg/DrawerIconSVG';
+import FailedSVG from '../assets/svg/FailedSVG';
+import MoneySVG from '../assets/svg/MoneySVG';
+import ReceivedSVG from '../assets/svg/ReceivedSVG';
+import SendSVG from '../assets/svg/SendSVG';
 import MoneyDialer from '../components/MoneyDialer';
+import {Colors, Typography} from '../styles';
 
 const RECEIVED = 'RECEIVED';
 const FAILED = 'FAILED';
 const SEND = 'SEND';
-
-const users = [
-  {
-    id: 1,
-    name: 'Adeboye Usman',
-    photo: User1,
-    status: RECEIVED,
-    amount: '200,000',
-  },
-  {
-    id: 2,
-    name: 'Mercy Popoola',
-    photo: User2,
-    status: FAILED,
-    amount: '110,000',
-  },
-  {
-    id: 3,
-    name: 'Onome Adetayo',
-    photo: User3,
-    status: SEND,
-    amount: '10,000',
-  },
-  {
-    id: 4,
-    name: 'Kingsley Abiodun',
-    photo: User4,
-    status: RECEIVED,
-    amount: '200,000',
-  },
-];
 
 const HomeScreen = ({navigation: {navigate}}) => {
   const [dialerOpen, setDialerOpen] = useState(false);
@@ -249,5 +218,36 @@ const styles = StyleSheet.create({
   photo: {width: 48, height: 48, borderRadius: 24},
   userInnerContainer: {paddingHorizontal: 15},
 });
+
+const users = [
+  {
+    id: 1,
+    name: 'Adeboye Usman',
+    photo: User1,
+    status: RECEIVED,
+    amount: '200,000',
+  },
+  {
+    id: 2,
+    name: 'Mercy Popoola',
+    photo: User2,
+    status: FAILED,
+    amount: '110,000',
+  },
+  {
+    id: 3,
+    name: 'Onome Adetayo',
+    photo: User3,
+    status: SEND,
+    amount: '10,000',
+  },
+  {
+    id: 4,
+    name: 'Kingsley Abiodun',
+    photo: User4,
+    status: RECEIVED,
+    amount: '200,000',
+  },
+];
 
 export default HomeScreen;

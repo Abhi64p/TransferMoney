@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import BackSVG from '../assets/svg/BackSVG';
@@ -16,11 +16,7 @@ const BackButton = ({containerStyle}) => {
 };
 
 const styles = StyleSheet.create({
-  margins: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+  margins: {marginTop: 10, flexDirection: 'row', alignItems: 'center'},
 });
 
 export default BackButton;

@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
-import {View, Text, Modal, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Modal,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-import {Colors, Typography} from '../styles';
+import BackSpaceSVG from '../assets/svg/BackSpaceSVG';
 import CloseSVG from '../assets/svg/CloseSVG';
 import MoneySVG from '../assets/svg/MoneySVG';
-import BackSpaceSVG from '../assets/svg/BackSpaceSVG';
+import {Colors, Typography} from '../styles';
 
 const MoneyDialer = ({visible, onClose, type}) => {
   const [typedValue, setTypedValue] = useState('');
@@ -65,6 +72,7 @@ const MoneyDialer = ({visible, onClose, type}) => {
 
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
+      <StatusBar backgroundColor="rgba(0,0,0,0.6)" animated={true} />
       <View style={styles.container}>
         <View style={styles.closeButtonContainer}>
           <TouchableOpacity onPress={onClose}>

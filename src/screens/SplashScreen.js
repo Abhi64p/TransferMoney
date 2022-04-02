@@ -1,13 +1,14 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  Dimensions,
-  TouchableOpacity,
   BackHandler,
+  Dimensions,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import Animated, {
   Easing,
   FadeIn,
@@ -22,9 +23,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import {useFocusEffect} from '@react-navigation/native';
 
-import {Colors, Typography} from '../styles';
 import SplashScreenSVG1 from '../assets/svg/SplashScreenSVG1';
 import SplashScreenSVG2 from '../assets/svg/SplashScreenSVG2';
 import SplashScreenSVG3 from '../assets/svg/SplashScreenSVG3';
@@ -34,6 +33,7 @@ import SplashScreenSVG6 from '../assets/svg/SplashScreenSVG6';
 import SplashScreenSVG7 from '../assets/svg/SplashScreenSVG7';
 import SplashScreenSVG8 from '../assets/svg/SplashScreenSVG8';
 import SplashScreenSVG9 from '../assets/svg/SplashScreenSVG9';
+import {Colors, Typography} from '../styles';
 
 const {width} = Dimensions.get('window');
 const timingConfig = {duration: 200, easing: Easing.cubic};
@@ -261,20 +261,6 @@ const styles = StyleSheet.create({
   },
   marginTop10: {marginTop: 10},
   row0: {flexDirection: 'row', marginBottom: 15},
-  smallBar: {
-    backgroundColor: Colors.liteYellow,
-    width: 16,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 2,
-  },
-  largeBar: {
-    backgroundColor: Colors.yellow,
-    width: 32,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 2,
-  },
   bar: {
     backgroundColor: Colors.yellow,
     height: 8,

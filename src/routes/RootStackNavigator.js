@@ -2,10 +2,10 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BackButton from '../components/BackButton';
-import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RequestScreen from '../screens/RequestScreen';
 import SendScreen from '../screens/SendScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,6 @@ const RootStackNavigator = () => (
       headerTitle: () => null,
       headerBackTitle: () => null,
       headerLeft: ({canGoBack}) => (canGoBack ? <BackButton /> : null),
-      headerStyle: {width: 100},
     }}>
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
     <Stack.Screen

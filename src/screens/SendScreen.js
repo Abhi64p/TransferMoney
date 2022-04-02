@@ -1,30 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  TextInput,
   Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Animated, {
-  interpolateColor,
-  withTiming,
-  useSharedValue,
-  useAnimatedStyle,
   Easing,
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from 'react-native-reanimated';
 
-import {Colors, Typography} from '../styles';
-import BackButton from '../components/BackButton';
-import MoneyDialer from '../components/MoneyDialer';
+import User10 from '../assets/images/User10.jpg';
+import User11 from '../assets/images/User11.jpg';
 import User6 from '../assets/images/User6.jpg';
 import User7 from '../assets/images/User7.jpg';
 import User8 from '../assets/images/User8.jpg';
 import User9 from '../assets/images/User9.jpg';
-import User10 from '../assets/images/User10.jpg';
-import User11 from '../assets/images/User11.jpg';
+import BackButton from '../components/BackButton';
+import MoneyDialer from '../components/MoneyDialer';
+import {Colors, Typography} from '../styles';
 
 const {width} = Dimensions.get('window');
 const timingConfig = {duration: 200, easing: Easing.cubic};
@@ -173,6 +173,8 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 8,
     marginLeft: 20,
+    paddingHorizontal: 10,
+    color: 'white',
   },
   row0: {
     flexDirection: 'row',
