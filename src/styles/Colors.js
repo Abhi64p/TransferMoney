@@ -13,6 +13,7 @@ export const Colors = {
   background: '#010A43',
   background1: '#10194E',
   background2: '#0D164B',
+  background4: '#1C265C',
   red: '#FE4A54',
   green: '#1DC7AC',
   rose: '#FF2E63',
