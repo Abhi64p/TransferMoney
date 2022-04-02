@@ -18,6 +18,7 @@ import Animated, {
 
 import {Colors, Typography} from '../styles';
 import BackButton from '../components/BackButton';
+import MoneyDialer from '../components/MoneyDialer';
 import User6 from '../assets/images/User6.jpg';
 import User7 from '../assets/images/User7.jpg';
 import User8 from '../assets/images/User8.jpg';
@@ -27,54 +28,15 @@ import User11 from '../assets/images/User11.jpg';
 
 const {width} = Dimensions.get('window');
 const timingConfig = {duration: 200, easing: Easing.cubic};
-const users = [
-  {
-    id: 1,
-    name: 'Adedoyin Leke',
-    photo: User6,
-    left: width * 0.4,
-    top: width * 0.09,
-  },
-  {
-    id: 2,
-    name: 'Adeleke Adeyanju',
-    photo: User7,
-    left: width * 0.66,
-    top: width * 0.25,
-  },
-  {
-    id: 3,
-    name: 'Adelaide Uti (son)',
-    photo: User8,
-    left: width * 0.08,
-    top: width * 0.25,
-  },
-  {
-    id: 4,
-    name: 'Adedoyin Leke',
-    photo: User10,
-    left: width * 0.67,
-    top: width * 0.6,
-  },
-  {
-    id: 5,
-    name: 'Adolph Colleague',
-    photo: User9,
-    left: width * 0.19,
-    top: width * 0.51,
-  },
-  {
-    id: 6,
-    name: 'Aduni Wale',
-    photo: User11,
-    left: width * 0.4,
-    top: width * 0.75,
-  },
-];
 
-const SendScreen = () => {
-  const [selectedUser, setSelectedUser] = useState();
+const SendScreen = ({
+  route: {
+    params: {type},
+  },
+}) => {
   const sheetValue = useSharedValue(50);
+  const [selectedUser, setSelectedUser] = useState();
+  const [showMoneyDialer, setShowMoneyDialer] = useState(false);
 
   useEffect(() => {
     sheetValue.value = withTiming(selectedUser ? 310 : 50, timingConfig);
@@ -83,6 +45,8 @@ const SendScreen = () => {
 
   const animatedStyle = useAnimatedStyle(() => ({height: sheetValue.value}));
 
+  const openMoneyDialer = () => setShowMoneyDialer(true);
+  const closeMoneyDialer = () => setShowMoneyDialer(false);
   const handleIdChange = _user =>
     setSelectedUser(_user?.id === selectedUser?.id ? undefined : _user);
 
@@ -119,10 +83,15 @@ const SendScreen = () => {
         <Text style={[Typography.h4White, styles.center]}>
           (+234) 905 169 275
         </Text>
-        <TouchableOpacity style={styles.sendMoney}>
+        <TouchableOpacity style={styles.sendMoney} onPress={openMoneyDialer}>
           <Text style={Typography.h4White}>Continue</Text>
         </TouchableOpacity>
       </Animated.View>
+      <MoneyDialer
+        visible={showMoneyDialer}
+        onClose={closeMoneyDialer}
+        type={type}
+      />
     </View>
   );
 };
@@ -262,3 +231,48 @@ const styles = StyleSheet.create({
 });
 
 export default SendScreen;
+
+const users = [
+  {
+    id: 1,
+    name: 'Adedoyin Leke',
+    photo: User6,
+    left: width * 0.4,
+    top: width * 0.09,
+  },
+  {
+    id: 2,
+    name: 'Adeleke Adeyanju',
+    photo: User7,
+    left: width * 0.66,
+    top: width * 0.25,
+  },
+  {
+    id: 3,
+    name: 'Adelaide Uti (son)',
+    photo: User8,
+    left: width * 0.08,
+    top: width * 0.25,
+  },
+  {
+    id: 4,
+    name: 'Adedoyin Leke',
+    photo: User10,
+    left: width * 0.67,
+    top: width * 0.6,
+  },
+  {
+    id: 5,
+    name: 'Adolph Colleague',
+    photo: User9,
+    left: width * 0.19,
+    top: width * 0.51,
+  },
+  {
+    id: 6,
+    name: 'Aduni Wale',
+    photo: User11,
+    left: width * 0.4,
+    top: width * 0.75,
+  },
+];

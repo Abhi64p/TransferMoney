@@ -61,8 +61,9 @@ const HomeScreen = ({navigation: {navigate}}) => {
 
   const openDialer = () => setDialerOpen(true);
   const closeDialer = () => setDialerOpen(false);
-  const handleDrawerClick = () => navigate('RequestScreen');
-  const handleSendMoneyClick = () => navigate('SendScreen');
+  const drawerClickHandler = () => navigate('RequestScreen');
+  const sendMoneyHandler = () => navigate('SendScreen', {type: 'Send'});
+  const requestMoneyHandler = () => navigate('SendScreen', {type: 'Request'});
 
   return (
     <>
@@ -71,14 +72,14 @@ const HomeScreen = ({navigation: {navigate}}) => {
         <View style={styles.row0}>
           <TouchableOpacity
             style={styles.drawerIconContainer}
-            onPress={handleDrawerClick}>
+            onPress={drawerClickHandler}>
             <DrawerIconSVG />
           </TouchableOpacity>
           <Text style={[Typography.h2White, styles.marginLeft20]}>
             Hello Sandra,
           </Text>
           <View style={styles.flex1} />
-          <TouchableOpacity style={styles.addMoneyButton}>
+          <TouchableOpacity style={styles.addMoneyButton} onPress={openDialer}>
             <Text style={Typography.buttonSecondary}>Add money</Text>
           </TouchableOpacity>
         </View>
@@ -94,12 +95,12 @@ const HomeScreen = ({navigation: {navigate}}) => {
         <View style={styles.row2}>
           <TouchableOpacity
             style={styles.sendReceiveMoney}
-            onPress={openDialer}>
+            onPress={requestMoneyHandler}>
             <Text style={Typography.buttonTertiary}>Request money</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.sendReceiveMoney}
-            onPress={handleSendMoneyClick}>
+            onPress={sendMoneyHandler}>
             <Text style={Typography.buttonTertiary}>Send money</Text>
           </TouchableOpacity>
         </View>
@@ -120,7 +121,7 @@ const HomeScreen = ({navigation: {navigate}}) => {
           ))}
         </View>
       </View>
-      <MoneyDialer visible={dialerOpen} onClose={closeDialer} />
+      <MoneyDialer visible={dialerOpen} onClose={closeDialer} type="Add" />
     </>
   );
 };

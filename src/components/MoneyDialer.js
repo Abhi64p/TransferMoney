@@ -6,7 +6,7 @@ import CloseSVG from '../assets/svg/CloseSVG';
 import MoneySVG from '../assets/svg/MoneySVG';
 import BackSpaceSVG from '../assets/svg/BackSpaceSVG';
 
-const MoneyDialer = ({visible, onClose}) => {
+const MoneyDialer = ({visible, onClose, type}) => {
   const [typedValue, setTypedValue] = useState('');
 
   /**
@@ -101,7 +101,7 @@ const MoneyDialer = ({visible, onClose}) => {
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.sendMoney}>
-            <Text style={Typography.h4White}>Send money</Text>
+            <Text style={Typography.h4White}>{type} money</Text>
           </TouchableOpacity>
         </View>
       </View>
